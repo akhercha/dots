@@ -1,0 +1,20 @@
+#!/bin/sh
+function gcommit() {
+    git add -A
+    current_branch=$(git symbolic-ref --short HEAD)
+
+    if [[ $current_branch == *"/"* ]]; then
+        type=$(echo $current_branch | cut -d'/' -f1)
+        issue=$(echo $current_branch | cut -d'/' -f2)
+        git commit -m "$type($issue): $1"
+    else
+        type=$current_branch
+        git commit -m "$type: $1"
+    fi
+
+}
+
+function gpush() {
+    current_branch=$(git symbolic-ref --short HEAD)
+    git push origin $current_branch
+}

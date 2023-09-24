@@ -1,0 +1,7 @@
+#!/bin/sh
+alias cat='bat'
+alias ls='exa'
+alias find='fd'
+alias grep='rg'
+alias code="codium"
+
