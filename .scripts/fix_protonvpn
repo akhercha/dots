@@ -1,0 +1,3 @@
+#!/bin/sh
+gnome-keyring-daemon --start &
+nm-applet &
