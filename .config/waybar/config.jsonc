@@ -7,7 +7,6 @@
   "margin-left": 0,
   "margin-right": 0,
   "modules-left": [
-    "custom/launcher",
     "hyprland/workspaces",
     "custom/playerctl",
     "custom/playerlabel"
@@ -124,11 +123,5 @@
     "on-scroll-down": "bash ~/.scripts/volume down",
     "scroll-step": 5,
     "on-click-right": "pavucontrol"
-  },
-  "custom/launcher": {
-    "format": "󰈸",
-    "on-click": "rofi -show p -modi p:rofi-power-menu"
-    //    "on-click": "wofi --show drun -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css",
-    //    "on-click-right": "wofi --show run -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css"
   }
 }
