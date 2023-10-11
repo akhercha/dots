@@ -1,5 +1,3 @@
-# TODO: split in multiple files.
-
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
@@ -13,17 +11,11 @@ plugins=(git F-Sy-H)
 source $ZSH/oh-my-zsh.sh
 cd
 
+# nvim bin path
+export PATH="$PATH:/usr/local/lib/nvim/bin"
+
 # Adds ~/.local/bin and subfolders to $PATH
 export PATH="$PATH:~/.local/bin"
-
-# Poetry
-export POETRY_ROOT="$HOME/.local/bin"
-export PATH="$POETRY_ROOT:$PATH"
-
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # Git shortcuts
 source ~/.local/bin/git_functions
@@ -45,5 +37,17 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Go lang
 export PATH=$PATH:/usr/local/go/bin
 
+# Flat Assembler
+export PATH=$PATH:/usr/local/lib/fasm
+
 # Libclang
 export LIBCLANG_PATH=/usr/lib
+
+# DBUS SESSION BUS ADDRESS is unset error.. ; have to dig more
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus
+
+# Rust
+source "$HOME/.cargo/env"
+
+# asdf
+. "$HOME/.asdf/asdf.sh"
