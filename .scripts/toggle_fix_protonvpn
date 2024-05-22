@@ -1,0 +1,30 @@
+#!/bin/sh
+
+are_services_running() {
+    if pgrep -f gnome-keyring-daemon > /dev/null && pgrep -f nm-applet > /dev/null
+    then
+        return 0
+    else
+        return 1
+    fi
+}
+
+start_services() {
+    gnome-keyring-daemon --start &
+    nm-applet &
+}
+
+stop_services() {
+    pkill -f gnome-keyring-daemon
+    pkill -f nm-applet
+}
+
+
+if are_services_running 
+then
+    stop_services
+    echo "Stopping gnome-keyring-daemon & nm-applet services"
+else
+    start_services
+    echo "Starting gnome-keyring-daemon & nm-applet services"
+fi
