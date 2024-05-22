@@ -42,6 +42,3 @@ shell:
 key_bindings:
   - { key: T, mods: Control, action: SpawnNewInstance }
   - { key: F, mods: Control, action: ToggleFullscreen }
-
-selection:
-  save_to_clipboard: true
