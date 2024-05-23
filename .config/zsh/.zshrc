@@ -6,6 +6,7 @@ fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
 
+# needs to be installed:
 # https://github.com/zdharma/fast-syntax-highlighting
 plugins=(git F-Sy-H)
 source $ZSH/oh-my-zsh.sh
