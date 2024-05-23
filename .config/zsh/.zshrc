@@ -1,7 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
-# https://github.com/sindresorhus/pue
+# https://github.com/sindresorhus/pure
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
