@@ -14,16 +14,12 @@ conky.config = {
 };
 
 conky.text = [[[
-    # Currently playing
-    {"full_text":"${exec playerctl -a metadata --format '{"text": "{{artist}} - {{markup_escape(title)}}", "tooltip": "{{playerName}} : {{markup_escape(title)}}", "alt": "{{status}}", "class": "{{status}}"}' | jq -r '.text'
+    {"full_text":"${exec playerctl -a metadata --format '{"text": "{{artist}} - {{title}}", "tooltip": "{{playerName}} : {{title}}", "alt": "{{status}}", "class": "{{status}}"}' | jq -r 'if .text != "" then "🎵 " + .text else "" end'
 }","color":"\#808080","separator":false,"separator_block_width":6},\
-    # Finds current volume
     {"full_text":"   🔉","color":"\#2E9AFE","separator":false,"separator_block_width":6},\
     {"full_text":"${exec amixer sget Master | awk -F'[][]' '/Left:/ { print $2 }'}","color":"\#808080","separator":false,"separator_block_width":6},\
-    # Calender
     {"full_text":"   📅","color":"\#2E9AFE","separator":false,"separator_block_width":6},\
     {"full_text":"${time %a %b %d}","color":"\#808080","separator":false},\
-    # Time
     {"full_text":" ⌚","color":"\#0404B4","separator":false,"separator_block_width":6},\
-    {"full_text":"${time %H:%M:%S} ","color":"\#808080","separator":false}
+    {"full_text":"${time %H:%M:%S  } ","color":"\#808080","separator":false}
 ],]]
