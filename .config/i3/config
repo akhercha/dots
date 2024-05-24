@@ -92,8 +92,11 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # switch workspace with mousewheel
-bindsym --whole-window --border $mod+button4 workspace prev
-bindsym --whole-window --border $mod+button5 workspace next
+bindsym --whole-window --border $mod+button4 workspace prev_on_output
+bindsym --whole-window --border $mod+button5 workspace next_on_output
+# switch workspace with arrows
+bindsym --whole-window --border $mod+Shift+Right workspace next_on_output
+bindsym --whole-window --border $mod+Shift+Left workspace prev_on_output
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -125,6 +128,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+hide_edge_borders smart
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -177,7 +182,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --rate 74.97
 exec --no-startup-id xrandr --output DP-0 --mode 1920x1080 --rate 239.76
 # re-set wallpapers
-exec --no-startup-ip nitrogen --restore
+exec_always nitrogen --restore
 
 # alt tab windows like (https://github.com/sagb/alttab)
-exec --no-startup-id alttab -fg "#d58681" -bg "#4a4a4a" -frame "#eb564d" -t 128x150 -i 127x64 -d 1
+exec --no-startup-id alttab -w 1 -fg "#d58681" -bg "#4a4a4a" -frame "#eb564d" -t 128x150 -i 127x64 -d 1
