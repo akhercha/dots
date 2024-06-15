@@ -20,6 +20,9 @@ set $down k
 set $left j
 set $right semicolon
 
+# Start picom
+exec --no-startup-id picom
+
 # Do nopt change focus on mouse hover
 focus_follows_mouse no
 
@@ -45,7 +48,8 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec alacritty
 bindsym $mod+e exec thunar
 bindsym $mod+BackSpace exec brave-browser
-# (0x3c = <>)
+bindsym $mod+t exec flatpak run io.github.alainm23.planify
+# (0x3c = <)
 bindsym $mod+0x3c exec code
 
 # sreenshots
@@ -58,7 +62,7 @@ bindsym $mod+q kill
 # show default i3 menu
 bindsym $mod+d exec dmenu_run
 # show rofi menu
-bindsym $mod+Tab exec "killall rofi || rofi -show drun -theme /home/akhercha/.config/rofi/config.rasi"
+bindsym $mod+Tab exec "killall rofi || rofi -show drun"
 # show rofi emoji menu (0x24 = $)
 bindsym $mod+0x24 exec "killall rofi || rofi -modi emoji -show emoji"
 
@@ -77,6 +81,8 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+bindsym $mod+l exec "loginctl lock-session"
+
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+shs layout stacking
 bindsym $mod+w layout tabbed
@@ -91,12 +97,20 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+popup_during_fullscreen leave_fullscreen
+
 # switch workspace with mousewheel
 bindsym --whole-window --border $mod+button4 workspace prev_on_output
 bindsym --whole-window --border $mod+button5 workspace next_on_output
 # switch workspace with arrows
 bindsym --whole-window --border $mod+Shift+Right workspace next_on_output
 bindsym --whole-window --border $mod+Shift+Left workspace prev_on_output
+
+# change focus
+bindsym Control+Left focus left
+bindsym Control+Down focus down
+bindsym Control+Up focus up
+bindsym Control+Right focus right
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -121,6 +135,19 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# https://wiki.archlinux.org/title/I3#Correct_handling_of_floating_dialogs
+for_window [window_role="About"] floating enable
+for_window [window_role="Organizer"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="page-info"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="toolbox"] floating enable
+for_window [window_role="webconsole"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

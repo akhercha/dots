@@ -10,45 +10,45 @@ prompt pure
 # https://github.com/zdharma/fast-syntax-highlighting
 plugins=(git F-Sy-H)
 source $ZSH/oh-my-zsh.sh
-cd
 
-# nvim bin path
-export PATH="$PATH:/usr/local/lib/nvim/bin"
-
+# Custom scripts
 # Adds ~/.local/bin and subfolders to $PATH
-export PATH="$PATH:~/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # Git shortcuts
 source ~/.local/bin/git_functions
 
-# Aliases
-source ~/.config/shell/aliases
+# Rust
+. "$HOME/.cargo/env"
 
-# Required for Raylib build
-export LIBCLANG_PATH=/usr/lib/x86_64-linux-gnu
-export PATH=$PATH:/home/akhercha/.spicetify
+# Pyenv
+# https://github.com/pyenv/pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
-# Bun completions
-[ -s "/home/akhercha/.bun/_bun" ] && source "/home/akhercha/.bun/_bun"
+# ASDF
+# https://asdf-vm.com/
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
+
+# Nodejs
+export PATH="$PATH:/usr/lib/node-v20.13.1-x64/bin/"
+
+# Pgadmin binaries
+export PATH="$PATH:/usr/pgadmin4/bin/"
 
 # Bun
+[ -s "/home/akhercha/.bun/_bun" ] && source "/home/akhercha/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# Go lang
-export PATH=$PATH:/usr/local/go/bin
+# Starkli
+. "/home/akhercha/.starkli/env"
 
-# Flat Assembler
-export PATH=$PATH:/usr/local/lib/fasm
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Libclang
-export LIBCLANG_PATH=/usr/lib
-
-# DBUS SESSION BUS ADDRESS is unset error.. ; have to dig more
-export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus
-
-# Rust
-source "$HOME/.cargo/env"
-
-# asdf
-. "$HOME/.asdf/asdf.sh"
+# Zoxide config
+eval "$(zoxide init zsh)"
+alias cd=z

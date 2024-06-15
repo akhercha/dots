@@ -1,6 +1,5 @@
 #!/bin/sh
 function gcommit() {
-    git add -A
     current_branch=$(git symbolic-ref --short HEAD)
 
     if [[ $current_branch == *"/"* ]]; then
