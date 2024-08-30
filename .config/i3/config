@@ -188,7 +188,8 @@ bindsym $mod+r mode "resize"
 bar {
         status_command /home/akhercha/.config/i3/bar
         tray_padding 2
-}
+        tray_output DP-0
+} 
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
